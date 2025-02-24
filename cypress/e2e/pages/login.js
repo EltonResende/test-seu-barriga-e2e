@@ -12,10 +12,21 @@ class Login {
     logarSite(email,senha){
        // cy.get("#email") // Busca por id
         cy.get(loginElements.email).type(email)
-        cy.get('input[placeholder="Password"]').type(senha)
-        cy.get('button[type=submit]').click()
+        cy.get(loginElements.senha).type(senha)
+        cy.get(loginElements.entrar).click()
 
     }
+
+    logarSiteSemDados(email, senha) {
+        if (email) {
+            cy.get(loginElements.email).type(email); // Só digita se o email não estiver vazio
+        }
+        if (senha) {
+            cy.get(loginElements.senha).type(senha); // Só digita se a senha não estiver vazia
+        }
+        cy.get(loginElements.entrar).click(); // Sempre clica no botão de login
+    }
+    
 
 }
 
